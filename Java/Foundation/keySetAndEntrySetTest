@@ -1,0 +1,90 @@
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class keySetAndEntrySetTest {
+
+	public static void main(String[] args) {
+		
+		//keySetTest();
+		//entrySetTest();
+		nullTest();
+	}
+
+	/*
+	 * Hashtable的key和value都不能为null
+	 * HashMap的key可以为null,但只会储存第一个;value可以为null无限制
+	 *  null=null
+		3=lisi
+		4=null
+		5=null
+	 */
+	private static void nullTest() {
+		
+		Map<Integer,String> map = new HashMap<Integer,String>();
+		map.put(null,"xiaoming");
+		map.put(null,"zhangsan");//key可以为null , 但是唯一的,其对应的value会覆盖原来的value
+		map.put(3, "lisi");
+		map.put(4, null);
+		map.put(5, null);
+		map.put(null, null);
+		
+		Set keySet = map.keySet();
+		
+		for(Iterator it= keySet.iterator();	it.hasNext();) {
+			Integer key = (Integer) it.next();
+			System.out.println(key+"="+map.get(key));
+		}
+		
+	}
+	
+
+	/*
+	 * Set map.keySet()---> Iterator set.iterator()
+	 * - key=iterator.next()  value=map.get(key)
+	 */
+	private static void keySetTest() {
+		
+		Map<Integer,String> map = new HashMap<Integer,String>();
+		map.put(1,"xiaoming");
+		map.put(2,"zhangsan");
+		map.put(3, "lisi");
+		
+		Set keySet = map.keySet();
+		
+		Iterator it= keySet.iterator();
+		while(it.hasNext() {
+			Integer key = (Integer) it.next();
+			System.out.println(key+"="+map.get(key));
+		}
+
+		/* 或者
+		for(Iterator it= keySet.iterator();	it.hasNext();) {
+			Integer key = (Integer) it.next();
+			System.out.println(key+"="+map.get(key));
+		}
+		*/
+		
+	}
+
+	/*
+	 * entrySet = map.entrySet()--->Iterator entrySet.iteratro() - Map.Entry<K,V> iterator.next()
+	 * - key=entry.getKey() value=entry.getValue() 
+	 */
+	private static void entrySetTest() {	
+		
+		Map<Integer,String> map = new HashMap<Integer,String>();
+		map.put(1,"xiaoming");
+		map.put(2,"zhangsan");
+		map.put(3, "lisi");
+		
+		Set<Map.Entry<Integer,String>> entrySet = map.entrySet();
+		
+		for(Iterator it = entrySet.iterator();it.hasNext();) {
+			Map.Entry<Integer, String> entry = (Entry<Integer, String>) it.next();
+			System.out.println(entry.getKey()+"="+entry.getValue());
+		}
+	}
+}
