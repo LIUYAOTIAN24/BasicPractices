@@ -1,0 +1,27 @@
+class Demo {
+
+	public static void main(String[] args) {
+	try {//捕获异常
+		show();
+		System.out.println("A");
+	} catch(Exception e) {
+		System.out.println("B");
+	} finally {
+			System.out.println("C");
+	}
+			System.out.println("D");
+	}
+
+	public static void show() throws Exception{//throws Exception:声明异常
+		throw new Exception();//抛出异常
+	}
+	
+	static { //静态代码块
+		System.out.println("hello,静态代码块");
+	}
+	
+	{ //构造代码块
+		System.out.println("hello,构造代码块");
+	}
+	
+}
