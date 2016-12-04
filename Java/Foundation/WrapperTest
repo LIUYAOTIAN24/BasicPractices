@@ -1,6 +1,4 @@
 import java.util.Arrays;
-
-
 /*
  * 对一个字符串中的数值进行从小到大的排序。
  * 
