@@ -69,7 +69,7 @@ public class Demo
 class Fu {
 	int num=9;//--显示初始化位于super()之后，构造代码块之前
 	{
-		System.out.println("Fu "+num);//① Fu    --于super()之后调用  //构造器：就近原则这里调用的父类	
+		System.out.println("Fu "+num);//① Fu    --显示初始化之后调用  //构造器：就近原则这里调用的父类	
 的num
 	}
 	
@@ -80,14 +80,14 @@ class Fu {
 		show();
 	}
 	void show() {
-		System.out.println("fu show "+num);//被覆盖,运行子类的.
+		System.out.println("fu show "+num);//被覆盖,动态绑定:不会调用父类的方法，运行子类的方法.
 	}
 }	
 
 class Zi extends Fu {
-	int num=8;//--显示初始化位于super()之后，构造代码块之前
+	int num=8;
 	{
-		System.out.println("Zi "+num);//③ Zi	--于super()之后调用
+		System.out.println("Zi "+num);//③ Zi
 	}
 	
 	Zi() {
