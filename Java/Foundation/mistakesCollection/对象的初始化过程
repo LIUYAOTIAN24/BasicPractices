@@ -1,5 +1,5 @@
 //对象的初始化过程
-静态绑定--private方法、static方法、final方法、域
+静态绑定--private方法、static方法、final方法或者“构造器”、域
 动态绑定--普通方法
 
 --求结果
@@ -15,9 +15,10 @@ public class Demo
 }
 
 class Fu {
-	int num=9;
+	int num=9;//--显示初始化位于super()之后，构造代码块之前
 	{
-		System.out.println("Fu");
+		System.out.println("Fu "+num);//构造器：就近原则这里调用的父类
+的num
 	}
 	
 	Fu() {
@@ -30,7 +31,7 @@ class Fu {
 }	
 
 class Zi extends Fu {
-	int num=8;
+	int num=8;//--显示初始化位于super()之后，构造代码块之前
 	{
 		System.out.println("Zi");
 	}
@@ -47,9 +48,9 @@ class Zi extends Fu {
 
 //结果
 /*
-Fu
+Fu 9
 zi show 0
-zi
+zi 8
 zi show 8
 9
 */
