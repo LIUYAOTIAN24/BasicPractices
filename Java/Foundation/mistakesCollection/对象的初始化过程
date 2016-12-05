@@ -1,0 +1,98 @@
+//对象的初始化过程
+--求结果
+
+public class Demo
+{
+	public static void main(String[] args)
+	{
+		Fu fu = new Zi();
+		System.out.println(fu.num);
+	}
+
+}
+
+class Fu {
+	int num=9;
+	{
+		System.out.println("Fu");
+	}
+	
+	Fu() {
+		super();
+		show();
+	}
+	void show() {
+		System.out.println("fu show "+num);
+	}
+}	
+
+class Zi extends Fu {
+	int num=8;
+	{
+		System.out.println("Zi");
+	}
+	
+	Zi() {
+		super();
+		show();
+	}
+	void show() {
+		System.out.println("zi show "+num);
+	}
+}
+
+
+//结果
+/*
+Fu
+zi show 0
+zi
+zi show 8
+9
+*/
+
+public class Demo
+{
+	public static void main(String[] args)
+	{
+		Fu fu = new Zi();
+		System.out.println(fu.num);//9  
+		//普通方法动态绑定-- 父类引用.成员方法 编译时看左，运行时看右；
+		//域静态绑定-- 父类引用.成员变量 编译、运行时都看左
+	}
+
+}
+
+class Fu {
+	int num=9;
+	{
+		System.out.println("Fu");//① Fu    --于super()之后调用
+	}
+	
+	Fu() {
+		super();//Object
+		//显示初始化.
+		//构造代码块初始化.
+		show();
+	}
+	void show() {
+		System.out.println("fu show "+num);//被覆盖,运行子类的.
+	}
+}	
+
+class Zi extends Fu {
+	int num=8;
+	{
+		System.out.println("Zi");//③ Zi	--于super()之后调用
+	}
+	
+	Zi() {
+		super();
+		//显示初始化.
+		//构造代码块初始化.
+		show();
+	}
+	void show() {
+		System.out.println("zi show "+num);//② zi show 0 ④ zi show 8 这里是子类的函数,子类自己有num,就近原则,调用的是自己的num
+	}
+}
