@@ -1,0 +1,23 @@
+interface Inter {
+	void show(int a,int b);
+	void func();
+}
+
+class Demo {
+	public static void main(String[] args) {
+		//补足代码:调用两个函数,要求用匿名内部类
+		
+}
+
+如下：
+
+class Demo {
+	public static void main(String[] args) {
+		//补足代码:调用两个函数,要求用匿名内部类
+		Inter in = new Inter() {
+			public void show(int a,int b){}
+			public void func() {}
+		}
+		in.show(3,4);
+		in.func();
+}
