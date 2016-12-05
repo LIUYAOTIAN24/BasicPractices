@@ -1,4 +1,7 @@
 //对象的初始化过程
+静态绑定--private方法、static方法、final方法、域
+动态绑定--普通方法
+
 --求结果
 
 public class Demo
